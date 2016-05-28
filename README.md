@@ -1,2 +1,0 @@
-# 2doList
-Todo List
