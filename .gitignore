@@ -1,5 +1,8 @@
 /node_modules
-/dist
+/app
+/test
+/.bowerrc
+/.editorconfig
 /.tmp
 /.sass-cache
 /bower_components
