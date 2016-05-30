@@ -7,8 +7,8 @@
       <div class="input-group">
         <input type="text" ng-model="todo" placeholder="What needs to be done?" class="form-control">
         <span class="input-group-btn">
-                  <input type="submit" class="btn btn-primary" value="Add">
-              </span>
+            <input type="submit" class="btn btn-primary" value="Add">
+        </span>
       </div>
     </div>
   </form>
@@ -17,11 +17,12 @@
 
   <!-- Todo List -->
   <div ui-sortable ng-model="todos">
-    <p class="input-group" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
-      <input type="text" ng-model="todo" class="form-control">
+    <ul class="input-group nav nav-pills”>" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
+      <!-- <input type="button" ng-model="todo" class="form-control" value="{{todo}}"> -->
+      {{todo.taskName}}
       <span class="input-group-btn">
         <button class="btn btn-danger" ng-click="removeTodo($index)" arialabel="Remove">X</button>
-    </span>
-    </p>
+      </span>
+    </ul>
   </div>
 </div>

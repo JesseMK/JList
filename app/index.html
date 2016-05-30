@@ -35,15 +35,15 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">jlist</a>
+            <a class="navbar-brand" href="#/">J List</a>
           </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+          <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-init="page = 1">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li ng-class="{ active:page === 1 }"><a ng-click="page = 1" href="#/">Home</a></li>
+              <li ng-class="{ active:page === 2 }"><a ng-click="page = 2" ng-href="#/about">About</a></li>
+              <li ng-class="{ active:page === 3 }"><a ng-click="page = 3" ng-href="#/contact">Contact</a></li>
             </ul>
           </div>
         </div>
@@ -62,7 +62,7 @@
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-    <script>
+    <!-- <script>
       ! function(A, n, g, u, l, a, r) {
         A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
             (A[l].q = A[l].q || []).push(arguments)
@@ -73,7 +73,7 @@
       ga('create', 'UA-XXXXX-X');
       ga('send', 'pageview');
 
-    </script>
+    </script> -->
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -96,6 +96,7 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/contact.js"></script>
     <!-- endbuild -->
   </body>
 

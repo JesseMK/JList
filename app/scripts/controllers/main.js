@@ -12,7 +12,10 @@ angular.module('jlistApp')
     }, true);
 
     $scope.addTodo = function() {
-      $scope.todos.push($scope.todo);
+      $scope.todos.push({
+        taskName: $scope.todo,
+        isDone: false,
+      });
       $scope.todo = '';
     };
 
