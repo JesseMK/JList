@@ -7,7 +7,7 @@
       <div class="input-group">
         <input type="text" ng-model="todo" placeholder="What needs to be done?" class="form-control">
         <span class="input-group-btn">
-            <input type="submit" class="btn btn-primary" value="Add">
+          <input type="submit" class="btn btn-primary" value="Add">
         </span>
       </div>
     </div>
@@ -18,12 +18,18 @@
   <!-- Todo List -->
   <div ui-sortable ng-model="todos">
     <ul class="input-group nav nav-pills”>" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
-      <!-- <input type="button" ng-model="todo" class="form-control" value="{{todo}}"> -->
-      {{todo.taskName}}
+      <!-- <input type="text" ng-model="todo" class="form-control" value="{{todo.taskName}}"> -->
       <span class="input-group-btn">
-        <button class="btn" ng-click="setisDone($index)" arialabel="Done!">{{isDone}}</button>
+        <!-- <button class="btn btn-info pull-left" ng-click="setisDone($index)" arialabel="taskName">{{todo.taskName}}</button> -->
+        <button class="btn btn-warning" ng-show="todo.isDone" ng-click="setisDone($index)" arialabel="Done!">Undo</button>
+        <button class="btn btn-success" ng-hide="todo.isDone" ng-click="setisDone($index)" arialabel="notDone!">Done</button>
+        <!-- <button class="btn btn-danger" ng-click="removeTodo($index)" arialabel="Remove">X</button> -->
       </span>
+      <input class="form-control" ng-click="setisOpen($index)" name="{{todo.taskName}}">
       <span class="input-group-btn">
+        <!-- <button class="btn btn-info pull-left" ng-click="setisDone($index)" arialabel="taskName">{{todo.taskName}}</button> -->
+        <!-- <button class="btn btn-warning" ng-show="todo.isDone" ng-click="setisDone($index)" arialabel="Done!">Undo</button> -->
+        <!-- <button class="btn btn-success" ng-hide="todo.isDone" ng-click="setisDone($index)" arialabel="notDone!">Done</button> -->
         <button class="btn btn-danger" ng-click="removeTodo($index)" arialabel="Remove">X</button>
       </span>
     </ul>

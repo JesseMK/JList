@@ -24,6 +24,6 @@ angular.module('jlistApp')
     };
 
     $scope.setisDone = function(index) {
-      $scope.todos[index].isDone = true;
+      $scope.todos[index].isDone = !$scope.todos[index].isDone;
     }
   });
