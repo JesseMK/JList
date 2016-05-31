@@ -23,4 +23,7 @@ angular.module('jlistApp')
       $scope.todos.splice(index, 1);
     };
 
+    $scope.setisDone = function(index) {
+      $scope.todos[index].isDone = true;
+    }
   });

@@ -21,6 +21,9 @@
       <!-- <input type="button" ng-model="todo" class="form-control" value="{{todo}}"> -->
       {{todo.taskName}}
       <span class="input-group-btn">
+        <button class="btn" ng-click="setisDone($index)" arialabel="Done!">{{isDone}}</button>
+      </span>
+      <span class="input-group-btn">
         <button class="btn btn-danger" ng-click="removeTodo($index)" arialabel="Remove">X</button>
       </span>
     </ul>
