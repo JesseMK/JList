@@ -2,7 +2,7 @@
 
 Just a Todo List.
 
-[J Linst Online](http://104.131.23.191/#)
+[J List Online](http://104.131.23.191/#)
 
 ![J List](images/2016/05/J List.png)
 
