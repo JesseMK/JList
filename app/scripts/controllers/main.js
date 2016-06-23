@@ -21,6 +21,15 @@ angular.module('jlistApp')
       $scope.todo = '';
     };
 
+    $scope.editTodo = function(index) {
+      $scope.todos[index] = ({
+        taskName: $scope.todo.taskName,
+        isDone: false,
+        Description: $scope.todo.Description,
+        deadLine: $scope.todo.deadLine,
+      });
+    };
+
     $scope.removeTodo = function(index) {
       $scope.todos.splice(index, 1);
     };

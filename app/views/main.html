@@ -3,75 +3,127 @@
 
   <!-- Todos input -->
   <form role="form" ng-submit="addTodo()" ng-init="editable = false">
-    <div class="row">
-      <div class="input-group">
-        <input type="text" ng-model="todo.taskName" placeholder="What needs to be done?" class="form-control">
-        <span class="input-group-btn">
-          <input type="button" class="btn btn-info" value="More" ng-click="editable = !editable">
-          <input type="submit" class="btn btn-primary" value="Add">
-        </span>
+
+    <div class="input-group">
+      <input type="text" ng-model="todo.taskName" placeholder="What needs to be done?" class="form-control">
+      <div class="input-group-btn">
+        <input type="button" class="btn btn-info" value="More" ng-click="editable = !editable">
+        <input type="submit" class="btn btn-primary" value="Add">
       </div>
-      <div class="input-group" ng-show="editable">
-        <span class="input-group-btn">
-          <input type="button" class="btn btn-default" value="Tack Description">
-        </span>
-        <input type="text" ng-model="todo.Description" placeholder="Tack Description" class="form-control">
-        <span class="input-group-btn">
-          <input type="button" class="btn btn-default" value="Deadline">
-        </span>
-        <input type="text" ng-model="todo.deadLine" placeholder="Deadline:yyyymmdd" class="form-control">
+    </div>
+
+    <div class="input-group" ng-show="editable">
+      <div class="input-group-btn">
+        <input type="button" class="btn btn-info" value="Tack Description">
       </div>
+      <input type="text" ng-model="todo.Description" placeholder="Tack Description" class="form-control">
+    </div>
+
+    <div class="input-group" ng-show="editable">
+      <div class="input-group-btn">
+        <input type="button" class="btn btn-info" value="Deadline">
+      </div>
+      <input type="text" ng-model="todo.deadLine" placeholder="Deadline:yyyymmdd" class="form-control">
+    </div>
+
+  </form>
+
+  <div style="padding:5px;"></div>
+
+  <!-- Todo List -->
+  <form role="form" ng-submit="editTodo($index)">
+    <div ui-sortable ng-model="todos">
+      <div ng-repeat="todo in todos" style="padding:5px 25px; cursor: move;" ng-init="detail = false, editable = false">
+
+        <div class="input-group">
+
+          <div class="input-group-btn" ng-show="todo.isDone">
+            <input type="button" class="btn btn-success" ng-click="setisDone($index)" value="Done!">
+          </div>
+
+          <div class="input-group-btn" ng-hide="todo.isDone">
+            <input type="button" class="btn btn-warning" ng-click="setisDone($index)" value="notYet!">
+          </div>
+
+          <input type="text" ng-model="todo.taskName" value="{{todo.taskName}}" class="form-control">
+
+          <div class="input-group-btn">
+            <!-- <input type="submit" ng-show="details" class="btn btn-success" value="Edit"> -->
+            <input type="button" class="btn btn-info" value="Detail" ng-click="details = !details">
+            <input type="button" class="btn btn-danger" value="Remove" ng-click="removeTodo($index)">
+          </div>
+
+        </div>
+
+        <div class="input-group" ng-show="details">
+
+          <div class="input-group-btn">
+            <input type="button" class="btn btn-info" value="Tack Description">
+          </div>
+
+          <input type="text" ng-model="todo.Description" value="{{todo.Description}}" class="form-control">
+
+          <div class="input-group-btn">
+            <input type="button" class="btn btn-info" value="Deadline">
+          </div>
+
+          <input type="text" ng-model="todo.deadLine" value="{{todo.deadLine}}" class="form-control">
+
+        </div>
+
+      </div>
+      <!-- <ul class="nav nav-pills" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;" ng-init="detail = false, editable = false">
+
+        <div class="row">
+          <div class="col-md-2">
+            <button class="btn btn-warning" ng-hide="todo.isDone" ng-click="setisDone($index)" arialabel="notYet!">notYet</button>
+            <button class="btn btn-success" ng-show="todo.isDone" ng-click="setisDone($index)" arialabel="Done!">Done!</button>
+          </div>
+
+          <div class="col-md-9">
+            <input class="btn btn-default" ng-click="details = !details" value="{{todo.taskName}}">
+          </div>
+
+          <div class="col-md-1">
+        <button class="btn btn-info" ng-click="editTodo($index)" arialabel="Edit">Edit</button>
+        <button class="btn btn-danger" ng-click="removeTodo($index)" arialabel="Remove">X</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-offset-2 col-md-9 col-md-offset-1" ng-show="details">
+            <div class="input-group-btn">
+              <input class="btn btn-default" value="Task Description">
+              <input class="btn btn-default" value="{{todo.Description}}">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-offset-2 col-md-9 col-md-offset-1" ng-show="details">
+            <div class="input-group-btn">
+              <input class="btn btn-default" value="Deadline">
+              <input type="text" class="btn btn-default" value="{{todo.deadLine}}">
+            </div>
+          </div>
+        </div>
+
+      </ul> -->
     </div>
   </form>
 
-
-  <!-- Todo List -->
-  <div ui-sortable ng-model="todos">
-    <ul class="nav nav-pills" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;" ng-init="detail = false, editable = false">
-
-      <span class="input-group-btn">
-        <button class="btn btn-warning" ng-hide="todo.isDone" ng-click="setisDone($index)" arialabel="notYet!">notYet</button>
-        <button class="btn btn-success" ng-show="todo.isDone" ng-click="setisDone($index)" arialabel="Done!">Done!</button>
-      </span>
-
-      <span class="input-group-btn">
-        <input class="btn btn-default" ng-click="details = !details" value="{{todo.taskName}}">
-      </span>
-
-      <span class="input-group-btn">
-        <!-- <button class="btn btn-info" ng-click="editTodo($index)" arialabel="Edit">Edit</button> -->
-        <button class="btn btn-danger" ng-click="removeTodo($index)" arialabel="Remove">X</button>
-      </span>
-
-      <div class="input-group" ng-show="details">
-        <span class="input-group-btn">
-          <input class="btn btn-default" value="Task Description">
-          <input class="btn btn-default" value="{{todo.Description}}">
-        </span>
-      </div>
-      <div class="input-group" ng-show="details">
-        <span class="input-group-btn">
-          <input class="btn btn-default" value="Deadline">
-          <input type="text" class="btn btn-default" value="{{todo.deadLine}}">
-        </span>
-      </div>
-
-    </ul>
-  </div>
-
   <!-- Count -->
-  <div class="list-group">
-    <div class="input-group">
-      <input class="btn btn-default" value="Today:">
-      <input class="btn btn-default" value="{{getToday()}}">
+  <div style="padding:10px;"></div>
+
+  <form role="form">
+    <div class="input-group-btn col-md-offset-1 col-md-10">
+      <input class="btn btn-info" value="Today:{{getToday()}}">
+      <input class="btn btn-success" value="Total:{{getTotal()}}">
+      <input class="btn btn-warning" value="Dead:{{getDead()}}">
     </div>
-    <div class="input-group">
-      <input class="btn btn-default" value="Total:">
-      <input class="btn btn-default" value="{{getTotal()}}">
-    </div>
-    <div class="input-group">
-      <input class="btn btn-default" value="Dead:">
-      <input class="btn btn-default" value="{{getDead()}}">
-    </div>
-  </div>
+  </form>
+
+  <div style="padding:15px;"></div>
+  <div style="padding:15px;"></div>
+
 </div>
